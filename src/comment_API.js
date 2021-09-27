@@ -5,7 +5,11 @@ class CommentApi {
     getComments() {
         fetch(this.port + `/comments`)
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(data => {
+            for(const comment of data){
+                let c = new Comment(comment)
+                c.attachToDom()
+            }
+        })
     }
-
 }
