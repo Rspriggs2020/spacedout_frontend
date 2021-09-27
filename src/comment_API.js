@@ -11,5 +11,6 @@ class CommentApi {
                 c.attachToDom()
             }
         })
+        .catch()
     }
 }
