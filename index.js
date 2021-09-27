@@ -1,1 +1,4 @@
-console.log('ello')
+const port = `http://localhost:3000/`;
+const commentCall = new CommentApi(port);
+
+commentCall.getComments()
