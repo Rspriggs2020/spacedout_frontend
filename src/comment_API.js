@@ -17,9 +17,9 @@ class CommentApi {
     createComments(){
         const commentInfo = {
             comment: {
-                title:,
-                description:,
-                info_id:,
+                title: titleValue.value,
+                description: descriptionValue.value,
+                info_id: dropDown.value,
 
             }
         }
