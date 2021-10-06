@@ -25,6 +25,4 @@ class Comment {
     attachToDom(){
         Comment.cont.appendChild(this.render())
     }
- 
-
 }
