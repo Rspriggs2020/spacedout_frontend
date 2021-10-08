@@ -1,15 +1,15 @@
 class InfoApi {
-    constructor(port){
-        this.port = port
+    constructor(baseUrl){
+        this.baseUrl = baseUrl
     }
     getInfos(){
-        fetch(`${this.port}/infos`)
+        fetch(`${this.baseUrl}/infos`)
         .then(response => response.json())
         .then(json => {
             json.forEach(element => {
                 //debugger
                 const i = new Info(element)
-                i.addToDrop()
+                i.addToSelection()
             })
         })
     }

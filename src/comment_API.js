@@ -1,9 +1,9 @@
 class CommentApi {
-    constructor(port) {
-        this.port = port;
+    constructor(baseUrl) {
+        this.baseUrl = baseUrl;
     }
     getComments() {
-        fetch(this.port + `/comments`)
+        fetch(this.baseUrl + `/comments`)
         .then(response => response.json())
         .then(data => {
             for(const comment of data){
@@ -19,7 +19,7 @@ class CommentApi {
             comment: {
                 title: titleValue.value,
                 description: descriptionValue.value,
-                info_id: dropDown.value
+                info_id: selection.value
             }
         }
         const configObject = {
@@ -30,11 +30,14 @@ class CommentApi {
             },
             body: JSON.stringify(commentInfo)
         }
-        fetch(this.port + `/comments`, configObject)
+        fetch(this.baseUrl + `/comments`, configObject)
         .then(response => response.json())
         .then(data => { 
             const c = new Comment(data)
             c.attachToDom()
         })
+    }
+    deleteComments(e) {
+        
     }
 }

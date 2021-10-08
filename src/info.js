@@ -10,10 +10,10 @@ class Info {
         this.url = url
         this.id = id
     }
-    addToDrop(){
+    addToSelection(){
         const option = document.createElement('option');
         option.value = this.id
         option.innerText = this.title
-        dropDown.appendChild(option)
+        selection.appendChild(option)
     }
 }
