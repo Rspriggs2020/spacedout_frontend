@@ -28,7 +28,7 @@ class CommentApi {
                 "Content-Type": "application/json",
                 Accept: "application/json"
             },
-            body: JSON.stringify(commentInfo)
+            body: JSON.stringify(coms)
         }
         fetch(this.baseUrl + `/comments`, configObject)
         .then(response => response.json())
@@ -37,7 +37,29 @@ class CommentApi {
             c.attachToDom()
         })
     }
+    editComments(c){
+        const {title, description, id} = comment
+        const commentInfo = {
+            title,
+            description
+        }
+        const configObject = {
+            method: 'PATCH',
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            },
+            body: JSON.stringify(commentInfo)
+        }
+        fetch(`${this.baseUrl}/comments/${id}`, configObject)
+        .then(comment.render())
+      
+    }
+
     deleteComments(e) {
-        
+        const id = e.target.dataset.id
+        e.target.parentElement.remove()
+        fetch(`${this.baseUrl}/comments/${id}`, {method: 'DELETE'})
+        .then(respone => respone.json())
     }
 }

@@ -11,7 +11,6 @@ class Comment {
         this.element.id = `comment-${id}`;
         this.element.addEventListener('click', this.handleClick)
         Comment.all.push(this)
-        //debugger
     }
     //displays title, description, edit and delete
     render() {
@@ -29,19 +28,22 @@ class Comment {
     handleClick = (e) => {
         if(e.target.innerText === "Edit"){
             console.log(e.target)
+            e.target.innerText = "Submit"
             this.editForm()
         }
         else if(e.target.innerText === "Delete"){
-            console.log()
-            this.deleteForm(e.target)
-        }
-        else if(e.target.innerText === "Save"){
+            console.log(e.target)
+            commentCall.deleteComments(e)
         }
     }
 
     editForm(){
-        const div = this.element.querySelector('div');
-        debugger
+        const editComment = this.element.querySelector('editComment');
+        for (const element of editComment.children) {
+            let input = element.innerText;
+            let title = element.classList[0];
+            element.outerHTML = `<input type="text" class="edit" value="${input}"/>`
+        }
     }
 
 
