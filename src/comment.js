@@ -13,7 +13,7 @@ class Comment {
         Comment.all.push(this)
     }
     //displays title, description, edit and delete
-    render() {
+    renderComment() {
         this.element.innerHTML = `
         <div data-id="${this.id}">
         <h1 class="title">${this.title}</h1>
@@ -48,6 +48,6 @@ class Comment {
 
 
     attachToDom(){
-        Comment.cont.appendChild(this.render())
+        Comment.cont.appendChild(this.renderComment())
     }
 }
