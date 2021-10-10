@@ -11,7 +11,7 @@ class Info {
         this.id = id
     }
     renderInfoList() {
-        retrun `
+        return `
         <li>
         <a href="#" data-id="${this.id}">${this.title}</a>
         </li>
