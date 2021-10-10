@@ -28,7 +28,7 @@ class CommentApi {
                 "Content-Type": "application/json",
                 Accept: "application/json"
             },
-            body: JSON.stringify(coms)
+            body: JSON.stringify(commentInfo)
         }
         fetch(this.baseUrl + `/comments`, configObject)
         .then(response => response.json())

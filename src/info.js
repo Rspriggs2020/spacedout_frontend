@@ -10,24 +10,26 @@ class Info {
     
         this.id = id
     }
-    addToSelection(){
-        const option = document.createElement('option');
-        option.value = this.id
-        option.innerText = this.title
-        selection.appendChild(option)
+    renderInfoList() {
+        retrun `
+        <li>
+        <a href="#" data-id="${this.id}">${this.title}</a>
+        </li>
+        `
     }
 
     renderInfo() {
-        this.element.innerHTML = `
-        <div info-id="${this.id}">
-        <h1 class="source">${this.source}</h1>
-        <p class="info-title">${this.title}</p>
-        <p class="date">${this.date}</p>
-        <p class="caption">${this.caption}</p>
-        <p class="text-credit">${this.text_credit}</p>
-        <p class="image-credit">${this.image_credit}</p>
+        return `
+        <div class="info_data">
+        <h1>${this.source}</h1>
+        <p ${this.title}</p>
+        <p ${this.date}</p>
+        <p ${this.caption}</p>
+        <p ${this.text_credit}</p>
+        <p ${this.image_credit}</p>
         </div>
         `
-        return this.element
     }
+
+
 }
