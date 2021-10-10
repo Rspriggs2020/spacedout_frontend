@@ -13,11 +13,12 @@ function getEventListener() {
 
 async function renderInfos() {
     const infos = await apiService.fetchInfos()
-    main.innerHTML = ""
+    main.outerHTML = ""
     infos.map(info => {
         const i = new Info(info)
-        main.innerHTML += i.render()
+        main.outerHTML += i.render()
     })
+    linkToClick()
 }
 
 async function renderComments() {
@@ -57,10 +58,17 @@ async function createInfos(e){
     main.innerHTML += newInfo.render()
 }
 
-async function displaycomments(id) {
-    const coms = await apiService.getComments(id)
-    const comment = new Comment(coms)
-    data.innerHTML = comment.renderComment()
+async function displayComments() {
+    let id = e.target.dataset.id
+    const data = await apiService.fetchComments(id)
+    const comment = new Comment(data)
+    main.innerHTML = comment.renderComment()
+}
+
+async function displayInfo(id){
+    const data = await apiService.fetchInfo(id)
+    const info = new Info(data)
+    main.innerHTML = info.renderInfo()
     if (info.comments) {
         info.comments.forEach(comment => {
             main.innerHTML += `
@@ -68,17 +76,30 @@ async function displaycomments(id) {
             <br>
             `
         })
-        document.getElementById('add-comment').addEventListener('click', displaycomments)
-  
+        linkToComments()
     }
+    document.getElementById('add-comment').addEventListener('click', displayCommentForm)
+    
 }
 
-async function displayInfo(e){
-    let id = e.target.dataset.id
-    const data = await apiService.getInfo(id)
-    const info = new Info(data)
-    main.innerHTML = info.renderInfo()
-    
+function linkToClick() {
+    const infos = document.querySelectorAll("li a")
+    infos.forEach(info => {
+        info.addEventListener('clcik', (e) => displayInfo(e.target.dataset.id))
+    })
+}
+
+function linkToComments() {
+   const comments = document.querySelectorAll("li a")
+   comments.forEach(comment =>
+    comment.addEventListener('click', displayComments))
+}
+
+function clickToCreateComment(){
+    const comments = document.querySelectorAll("li a")
+    comments.forEach(comment => {
+        comment.addEventListener('click', displayComments)
+    })
 }
 
 load()

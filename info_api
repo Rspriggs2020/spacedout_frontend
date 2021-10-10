@@ -1,4 +1,4 @@
-class InfoApi {
+//class InfoApi {
     constructor(baseUrl){
         this.baseUrl = baseUrl
     }
