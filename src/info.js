@@ -32,7 +32,7 @@ class Info{
         <h2> ${this.discoveryDate}</h2>
         </div>
         <button id="add-comment" data-id"${this.id}>Add Comment</button>
-        <div id="create-comment"</div>
+        <div id="add-comment-from"</div>
         `
     }
 }

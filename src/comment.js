@@ -15,12 +15,13 @@ class Comment {
     }
     renderComment() {
         return `
-        <div data-id="${this.id}">
-        <h1 class="title">${this.title}</h1>
-        <p class="description">${this.description}</p>
+        <h1>Title</h1>
+        <h1>${this.title}</h1>
+        <h2>Description:</h2>
+        <h2>${this.description}</h2>
         </div>
-        <button class="edit" data-id=${this.id}>Edit</button>
-        <button class="delete" data-id=${this.id}>Delete</button>
+      
+        <button id="delete-comment" data-id="${this.id}" data-comment-id="${this.info_id}">Delete</button>
         `
     }
 }

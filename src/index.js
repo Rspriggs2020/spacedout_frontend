@@ -44,7 +44,7 @@ function displayCommentForm(e) {
     </form>
     `
     formInput.innerHTML = input
-    document.querySelector('form').addEventListener('submit', createComments)
+    document.querySelector('form').addEventListener('submit', createComment)
 }
 
 async function createInfos(e){
@@ -58,14 +58,14 @@ async function createInfos(e){
     main.innerHTML += newInfo.render()
 }
 
-async function createComments(e) {
+async function createComment(e) {
     e.preventDefault()
     const infoId = document.querySelector("#add-comment").dataset.id
     let main = document.getElementById('main')
     let comment = {
         info_id: infoId,
-        title: e.target.querySelector("#title").value,
-        description: e.target.querySelector("#description").value,
+        title: e.target.querySelector("#title"),
+        description: e.target.querySelector("#description"),
     }
     let data  = await apiService.getCreateComment(comment)
     let newComment = new Comment(data)
@@ -78,6 +78,7 @@ async function displayComments(e) {
     const data = await apiService.fetchComments(id)
     const comment = new Comment(data)
     main.innerHTML = comment.renderComment()
+    document.getElementById('delete-comment').addEventListener('click', deleteComment)
 }
 
 async function displayInfo(id){
@@ -114,6 +115,15 @@ function clickToCreateComment(){
     const comments = document.querySelectorAll("li a")
     comments.forEach(comment => {
         comment.addEventListener('click', displayComments)
+    })
+}
+
+async function deleteComment() {
+    let infoId = e.target.dataset.infoId
+    let id = e.target.id
+    const data = await apiService.deleteComment(id)
+    .then( data => {
+        displayInfo(infoId)
     })
 }
 
