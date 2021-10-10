@@ -1,4 +1,4 @@
-class Info {
+class Info{
     constructor(data) {
         this.name = data.name
         this.galaxy = data.galaxy
@@ -18,14 +18,12 @@ class Info {
 
     renderInfo() {
         return `
-        <div class="info_data">
         <h1>${this.name}</h1>
-        <p ${this.galaxy}</p>
-        <p ${this.moons}</p>
-        <p ${this.mass}</p>
-        <p ${this.gravity}</p>
-        <p ${this.discoveryDate}</p>
-        </div>
+        <h2> ${this.galaxy}</h2>
+        <h2> ${this.moons}</h2>>
+        <h2> ${this.mass}</h2>>
+        <h2> ${this.gravity}</h2>>
+        <h2> ${this.discoveryDate}</h2>>
         `
     }
 }

@@ -4,24 +4,24 @@ class ApiService {
     }
 
     async fetchInfos() {
-        let response = await fetch(`${this.baseUrl}/infos`)
+        let response = await fetch(this.baseUrl + `/infos`)
         let data = await response.json()
         return data
     }
 
     async fetchComments() {
-        let response = await fetch(`${this.baseUrl}/comments`)
+        let response = await fetch(this.baseUrl `/comments`)
         let data = await response.json()
         return data
     }
 
     async fetchInfo(id) {
-        let response = await fetch(`${this.baseUrl}/infos/${id}`)
+        let response = await fetch(this.baseUrl + `/infos/${id}`)
         let data = await response.json()
         return data
     }
     async fetchComment(id) {
-        let response = await fetch(`${this.baseUrl}/comments/${id}`)
+        let response = await fetch(this.baseUrl + `/comments/${id}`)
         let data = await response.json()
         return data
     }

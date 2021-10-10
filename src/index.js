@@ -1,5 +1,5 @@
 const apiService = new ApiService()
-const main = document.getElementById('main')
+let main = document.getElementById('main')
 
 const load = () => {
     getEventListener()
@@ -13,28 +13,27 @@ function getEventListener() {
 
 async function renderInfos() {
     const infos = await apiService.fetchInfos()
-    main.outerHTML = ""
+    main.innerHTML = ""
     infos.map(info => {
         const i = new Info(info)
-        main.outerHTML = i.render()
+        main.innerHTML = i.render()
     })
     linkToClick()
 }
 
 async function renderComments() {
     const comments = await apiService.fetchComments()
-    main.innerHTML = ""
+    comments.infos = document.getElementById('main')
     comments.map(comment => {
         const c = new Comment(comment)
-        main.innerHTML = c.render()
+        comments.innerHTML = c.render()
     })
 }
 
-function displayCommentForm(e) {
-    let form = document.querySelector("#new-comment-form")
+function displayCommentForm() {
+    let formInput = document.querySelector("#new-comment-form")
     let input = `
     <form>
-    <input type="hidden" value="${e.target.dataset.id}">
     <label>Title:</label>
     <input type="text" name="title"</input>
     <label>Description:</label>
@@ -43,8 +42,8 @@ function displayCommentForm(e) {
     <input type="submit" value="Create Comment">
     </form>
     `
-    form.innerHTML = input
-    document.querySelector('comment-form').addEventListener('submit', createComments)
+    formInput.innerHTML = input
+    document.querySelector('form').addEventListener('submit', createComments)
 }
 
 async function createInfos(e){
@@ -69,7 +68,7 @@ async function createComments(e) {
     }
     let data  = await apiService.getCreateComment(comment)
     let newComment = new Comment(data)
-    main.innerHTML = newComment.renderComment()
+    main.innerHTML += newComment.renderComment()
     clickToCreateComment()
 }
 

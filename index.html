@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <!-- <script defer src="src/info.js"></script>
+    <script defer src="src/info.js"></script>
     <script defer src="src/api_service.js"></script>
     <script defer src="src/comment.js"></script>
     <script defer src="src/index.js"></script>
-    <title>SpacedOut</title>-->
+    <title>SpacedOut</title>
     <!-- <link href="https://api.le-systeme-solaire.net/rest/bodies" Set-Cookie: flavor=choco; SameSite=None; Secure
     rel="stylesheet" crossorigin="anonymous"> -->
     
@@ -20,16 +20,25 @@
         <h2>Spaced Out</h2>
         <h1>"One small step for man, one giant leap for mankind"</h1>
         <h3>Space is vast, mysterious, and unknown. Thanks to NASA, they share a glimpse into our galaxy and it's farthest reaches. To check out more click the button below</h3>
-        <a href="#" id="infos" class="btn btn primary">Planet Info</a>
+        <!--<button href="#" id="infos" class="btn btn primary">Planet Info</button>
+        <button href="#" id="comments" class="btn btn primary">Comments</button>-->
+    </div>
+    <div id="click-button">
+        <button href="#info" id="infos" class="btn btn primary">Planet Info</button>
+        <button href="#" id="comments" class="btn btn primary">Comments</button>
     </div>
 
-    <div>
-        
+    
+
+   <!--<h2>Create Your Comment</h2> -->
+    <div id="new-comment-form"></div>
+    <div id="comment-form"></div>
+    <div id="main">
+        <ul>
+
+        </ul>
     </div>
-
-
-    <h2>Create Your Comment</h2>
-        <form id="comment-form">
+        <!--<form id="comment-form">
             <label for="comment_data">Title:</label>
             <input type="text" name="comment" id="comment-input"/>
             <br>
@@ -38,16 +47,14 @@
             <input type="text" name="description" id="comment-description">
             <br>
             <br>
-            <select name="info_id" id="info_dropdown">
+           
 
-            </select>
             <input type="submit" value="Create Comment">
-        </form>
-    </div>
-    <script src="src/api_service.js"></script>
+        </form> -->
+   <!--<script src="src/api_service.js"></script>
     <script src="src/comment.js"></script>
     <script src="src/index.js"></script>
-    <script src="src/info.js"></script>
+    <script src="src/info.js"></script> -->
     
 </body>
 </html>
