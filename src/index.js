@@ -41,3 +41,12 @@ function createCommentForm() {
     document.querySelector('form').addEventListener('submit', renderComments)
 }
 
+async function displaycomments(e) {
+    let id = e.target.dataset.id
+    const coms = await apiService.getComments(id)
+    const comment = new Comment(coms)
+    data.innerHTML = comment.renderComments()
+  
+
+}
+

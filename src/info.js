@@ -1,19 +1,19 @@
 class Info {
-    constructor({source, image, title, date, caption, text_credit, image_credit, id}) {
-        this.source = source
-        this.image = image
-        this.image = title
-        this.date = date
-        this.caption = caption
-        this.text_credit = text_credit
-        this.image_credit = image_credit
+    constructor({name, isPlanet, moons, mass, gravity, discoveredBy, discoveryDate, id}) {
+        this.name = name
+        this.isPlanet = isPlanet
+        this.moons = moons
+        this.mass = mass
+        this.gravity = gravity
+        this.discoveredBy = discoveredBy
+        this.discoveryDate = discoveryDate
     
         this.id = id
     }
     renderInfoList() {
         return `
         <li>
-        <a href="#" data-id="${this.id}">${this.title}</a>
+        <a href="#" data-id="${this.id}">${this.name}</a>
         </li>
         `
     }
@@ -21,12 +21,13 @@ class Info {
     renderInfo() {
         return `
         <div class="info_data">
-        <h1>${this.source}</h1>
-        <p ${this.title}</p>
-        <p ${this.date}</p>
-        <p ${this.caption}</p>
-        <p ${this.text_credit}</p>
-        <p ${this.image_credit}</p>
+        <h1>${this.name}</h1>
+        <p ${this.isPlanet}</p>
+        <p ${this.moons}</p>
+        <p ${this.mass}</p>
+        <p ${this.gravity}</p>
+        <p ${this.discoveredBy}</p>
+        <p ${this.discoveryDate}</p>
         </div>
         `
     }

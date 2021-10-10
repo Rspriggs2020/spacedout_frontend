@@ -4,24 +4,24 @@ class ApiService {
     }
 
     async getInfos() {
-        let response = await fetch(this.baseUrl + `/infos`)
+        let response = await fetch(`${this.baseUrl}/infos`)
         let data = await response.json()
         return data
     }
 
     async getComments() {
-        let response = await fetch(this.baseUrl + `/comments`)
+        let response = await fetch(`${this.baseUrl}/comments`)
         let data = await response.json()
         return data
     }
 
     async getInfo(id) {
-        let response = await fetch(this.baseUrl + `/infos/${id}`)
+        let response = await fetch(`${this.baseUrl}/infos/${id}`)
         let data = await response.json()
         return data
     }
     async getComment(id) {
-        let response = await fetch(this.baseUrl + `/comments/${id}`)
+        let response = await fetch(`${this.baseUrl}/comments/${id}`)
         let data = await response.json()
         return data
     }
@@ -36,7 +36,7 @@ class ApiService {
                 Accept: 'application/json'
             }
         }
-        let response = await fetch(this.baseUrl + `/infos`, configObject)
+        let response = await fetch(`${this.baseUrl}/infos`, configObject)
         let data = await response.json()
         return data
     }
@@ -50,7 +50,7 @@ class ApiService {
                 Accept: 'application/json'
             }
         }
-        let response = await fetch(this.baseUrl + `/comments`, configObject)
+        let response = await fetch(`${this.baseUrl}/comments`, configObject)
         let data = await response.json()
         return data
     }
