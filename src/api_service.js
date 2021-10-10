@@ -3,13 +3,13 @@ class ApiService {
         this.baseUrl = 'http://localhost:3000'
     }
 
-    async getInfos() {
+    async fetchInfos() {
         let response = await fetch(`${this.baseUrl}/infos`)
         let data = await response.json()
         return data
     }
 
-    async getComments() {
+    async fetchComments() {
         let response = await fetch(`${this.baseUrl}/comments`)
         let data = await response.json()
         return data
@@ -53,6 +53,17 @@ class ApiService {
         let response = await fetch(`${this.baseUrl}/comments`, configObject)
         let data = await response.json()
         return data
+    }
+
+    async deleteComment(id) {
+        let configObject = {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+            }
+        }
+        let response = await fetch(`${this.baseUrl}/comments/${id}`, configObject)
     }
 
 }

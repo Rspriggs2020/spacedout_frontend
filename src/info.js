@@ -1,16 +1,18 @@
 class Info {
-    constructor({name, isPlanet, moons, mass, gravity, discoveredBy, discoveryDate, id}) {
+    static all = [];
+    static cont = document.getElementById("info-catch");
+    constructor({name, galaxy, moons, mass, gravity, discoveryDate, id}) {
         this.name = name
-        this.isPlanet = isPlanet
+        this.galaxy = galaxy
         this.moons = moons
         this.mass = mass
         this.gravity = gravity
-        this.discoveredBy = discoveredBy
         this.discoveryDate = discoveryDate
+        this.element = document.createElement('li');
     
         this.id = id
     }
-    renderInfoList() {
+    render() {
         return `
         <li>
         <a href="#" data-id="${this.id}">${this.name}</a>
@@ -19,17 +21,17 @@ class Info {
     }
 
     renderInfo() {
-        return `
+        this.element.innerHTML = `
         <div class="info_data">
         <h1>${this.name}</h1>
-        <p ${this.isPlanet}</p>
+        <p ${this.galaxy}</p>
         <p ${this.moons}</p>
         <p ${this.mass}</p>
         <p ${this.gravity}</p>
-        <p ${this.discoveredBy}</p>
         <p ${this.discoveryDate}</p>
         </div>
         `
+        return this.element
     }
 
 

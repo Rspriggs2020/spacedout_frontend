@@ -1,23 +1,28 @@
 class Comment {
-    constructor({id, title, description, info_id}) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.info_id = info_id
+    static all = [];
+    static cont = document.getElementById("comments-catch");
+    constructor(data) {
+        this.id = data.id;
+        this.title = data.title;
+        this.description = data.description;
+        this.info_id = data.info_id
     }
     renderComments() {
         return `
         <li>
-        <a href="#" data-id="${this.id}">${this.title}</a>
+        <a data-id="${this.id}">${this.title}</a>
         </li>
         `
     }
     renderComment() {
-        return `
-        <div class="comment_data">
-        <h1>${this.title}</h1>
-        <p ${this.description}</p>
+        this.element.innerHTML = `
+        <div data-id="${this.id}">
+        <h1 class="title">${this.title}</h1>
+        <p class="description">${this.description}</p>
         </div>
+        <button class="edit" data-id=${this.id}>Edit</button>
+        <button class="delete" data-id=${this.id}>Delete</button>
         `
+        return this.element
     }
 }
