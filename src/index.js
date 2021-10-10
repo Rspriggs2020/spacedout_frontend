@@ -73,12 +73,12 @@ async function createComment(e) {
     clickToCreateComment()
 }
 
-async function displayComments(e) {
+async function displayComment(e) {
     let id = e.target.dataset.id
-    const data = await apiService.fetchComments(id)
+    const data = await apiService.fetchComment(id)
     const comment = new Comment(data)
     main.innerHTML = comment.renderComment()
-    document.getElementById('delete-comment').addEventListener('click', deleteComment)
+    document.getElementById('delete-comment').addEventListener('click', getDeleteComment)
 }
 
 async function displayInfo(id){
@@ -88,7 +88,7 @@ async function displayInfo(id){
     if (info.comments) {
         info.comments.forEach(comment => {
             main.innerHTML += `
-            <li><a href="#" data-id="${comment.id}" data-info-id="${info.id}">${info.name}</a></li>
+            <li><a href="#" data-id="${comment.id}" data-info-id="${info.id}">${info.name} ${info.galaxy}</a></li>
             <br>
             `
         })
@@ -108,23 +108,25 @@ function linkToClick() {
 function linkToComments() {
    const comments = document.querySelectorAll("li a")
    comments.forEach(comment =>
-    comment.addEventListener('click', displayComments))
+    comment.addEventListener('click', displayComment))
 }
 
 function clickToCreateComment(){
     const comments = document.querySelectorAll("li a")
     comments.forEach(comment => {
-        comment.addEventListener('click', displayComments)
+        comment.addEventListener('click', displayComment)
     })
 }
 
-async function deleteComment() {
+async function getDeleteComment(e) {
     let infoId = e.target.dataset.infoId
-    let id = e.target.id
+    let id = e.target.dataset.id
     const data = await apiService.deleteComment(id)
     .then( data => {
         displayInfo(infoId)
     })
 }
+
+
 
 load()
