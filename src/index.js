@@ -1,5 +1,5 @@
 const apiService = new ApiService()
-let main = document.getElementById('main')
+const main = document.getElementById('main')
 
 const load = () => {
     getEventListener()
@@ -16,7 +16,7 @@ async function renderInfos() {
     main.outerHTML = ""
     infos.map(info => {
         const i = new Info(info)
-        main.outerHTML += i.render()
+        main.outerHTML = i.render()
     })
     linkToClick()
 }
@@ -26,13 +26,13 @@ async function renderComments() {
     main.innerHTML = ""
     comments.map(comment => {
         const c = new Comment(comment)
-        main.innerHTML += c.render()
+        main.innerHTML = c.render()
     })
 }
 
-function displayCommentForm() {
+function displayCommentForm(e) {
     let form = document.querySelector("#new-comment-form")
-    let html = `
+    let input = `
     <form>
     <input type="hidden" value="${e.target.dataset.id}">
     <label>Title:</label>
@@ -43,7 +43,7 @@ function displayCommentForm() {
     <input type="submit" value="Create Comment">
     </form>
     `
-    form.innerHTML = html
+    form.innerHTML = input
     document.querySelector('comment-form').addEventListener('submit', createComments)
 }
 
@@ -56,6 +56,21 @@ async function createInfos(e){
     let data = await apiService.getCreateInfo(info)
     let newInfo = new Info(data)
     main.innerHTML += newInfo.render()
+}
+
+async function createComments(e) {
+    e.preventDefault()
+    const infoId = document.querySelector("#add-comment").dataset.id
+    let main = document.getElementById('main')
+    let comment = {
+        info_id: infoId,
+        title: e.target.querySelector("#title").value,
+        description: e.target.querySelector("#description").value,
+    }
+    let data  = await apiService.getCreateComment(comment)
+    let newComment = new Comment(data)
+    main.innerHTML = newComment.renderComment()
+    clickToCreateComment()
 }
 
 async function displayComments() {
