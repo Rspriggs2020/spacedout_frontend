@@ -1,14 +1,14 @@
 const apiService = new ApiService()
 let main = document.getElementById('main')
 
-const init = () => {
-    bindEventListener()
+const load = () => {
+    getEventListener()
     renderInfos()
 }
 
-function bindEventListener() {
-    document.getElementById('comment-form').addEventListener('click', createCommentForm)
-    document.getElementById('display-info').addEventListener('click', renderInfos)
+function getEventListener() {
+    document.getElementById('comment-form').addEventListener('click', displayCommentForm)
+    document.getElementById('infos').addEventListener('click', renderInfos)
 }
 
 async function renderInfos() {
@@ -16,7 +16,7 @@ async function renderInfos() {
     main.innerHTML = ""
     infos.map(info => {
         const i = new Info(info)
-        main.innerHTML = i.render() 
+        main.innerHTML += i.render()
     })
 }
 
@@ -29,19 +29,20 @@ async function renderComments() {
     })
 }
 
-function createCommentForm() {
-    let form = document.querySelector("new-comment-form")
-    let input = `
+function displayCommentForm() {
+    let form = document.querySelector("#new-comment-form")
+    let html = `
     <form>
+    <input type="hidden" value="${e.target.dataset.id}">
     <label>Title:</label>
-    <input type="text" name="title" id="comment-input"></input>
+    <input type="text" name="title"</input>
     <label>Description:</label>
-    <input type="text" name="description" id="comment-description"></input>
+    <input type="text" name="description"</input>
     <br>
     <input type="submit" value="Create Comment">
     </form>
     `
-    form.innerHTML = input
+    form.innerHTML = html
     document.querySelector('comment-form').addEventListener('submit', createComments)
 }
 
@@ -53,7 +54,7 @@ async function createInfos(e){
     }
     let data = await apiService.getCreateInfo(info)
     let newInfo = new Info(data)
-    main.innerHTML = newInfo.renderInfos()
+    main.innerHTML += newInfo.render()
 }
 
 async function displaycomments(id) {
@@ -80,4 +81,4 @@ async function displayInfo(e){
     
 }
 
-init()
+load()

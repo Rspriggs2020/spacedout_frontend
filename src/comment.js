@@ -1,6 +1,4 @@
 class Comment {
-    static all = [];
-    static cont = document.getElementById("comments-catch");
     constructor(data) {
         this.id = data.id;
         this.title = data.title;
@@ -12,10 +10,11 @@ class Comment {
         <li>
         <a data-id="${this.id}">${this.title}</a>
         </li>
+        <button id="create-comment" data-id="${comment.id}">Create Comment</button>
         `
     }
     renderComment() {
-        this.element.innerHTML = `
+        return `
         <div data-id="${this.id}">
         <h1 class="title">${this.title}</h1>
         <p class="description">${this.description}</p>
@@ -23,6 +22,5 @@ class Comment {
         <button class="edit" data-id=${this.id}>Edit</button>
         <button class="delete" data-id=${this.id}>Delete</button>
         `
-        return this.element
     }
 }

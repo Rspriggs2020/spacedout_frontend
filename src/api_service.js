@@ -15,12 +15,12 @@ class ApiService {
         return data
     }
 
-    async getInfo(id) {
+    async fetchInfo(id) {
         let response = await fetch(`${this.baseUrl}/infos/${id}`)
         let data = await response.json()
         return data
     }
-    async getComment(id) {
+    async fetchComment(id) {
         let response = await fetch(`${this.baseUrl}/comments/${id}`)
         let data = await response.json()
         return data
