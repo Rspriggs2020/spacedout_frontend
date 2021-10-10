@@ -8,7 +8,7 @@ class Comment {
     renderComments() {
         return `
         <li>
-        <a data-id="${this.id}">${this.title}</a>
+        <a href="#" data-id="${this.id}">${this.title}</a>
         </li>
         <button id="create-comment" data-id="${comment.id}">Create Comment</button>
         `

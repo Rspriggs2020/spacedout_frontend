@@ -8,7 +8,7 @@ const load = () => {
 
 function getEventListener() {
     document.getElementById('comment-form').addEventListener('click', displayCommentForm)
-    document.getElementById('infos').addEventListener('click', renderInfos)
+    document.getElementById('form').addEventListener('click', renderInfos)
 }
 
 async function renderInfos() {
@@ -16,7 +16,7 @@ async function renderInfos() {
     main.innerHTML = ""
     infos.map(info => {
         const i = new Info(info)
-        main.innerHTML = i.render()
+        main.innerHTML += i.render()
     })
     linkToClick()
 }
@@ -26,14 +26,15 @@ async function renderComments() {
     comments.infos = document.getElementById('main')
     comments.map(comment => {
         const c = new Comment(comment)
-        comments.innerHTML = c.render()
+        comments.innerHTML += c.render()
     })
 }
 
-function displayCommentForm() {
+function displayCommentForm(e) {
     let formInput = document.querySelector("#new-comment-form")
     let input = `
     <form>
+    <input type="hidden" value="${e.target.dataset.id}">
     <label>Title:</label>
     <input type="text" name="title"</input>
     <label>Description:</label>
@@ -68,11 +69,11 @@ async function createComments(e) {
     }
     let data  = await apiService.getCreateComment(comment)
     let newComment = new Comment(data)
-    main.innerHTML += newComment.renderComment()
+    main.innerHTML = newComment.renderComment()
     clickToCreateComment()
 }
 
-async function displayComments() {
+async function displayComments(e) {
     let id = e.target.dataset.id
     const data = await apiService.fetchComments(id)
     const comment = new Comment(data)
@@ -86,7 +87,7 @@ async function displayInfo(id){
     if (info.comments) {
         info.comments.forEach(comment => {
             main.innerHTML += `
-            <li><a href="#" data-id="${comment.id}" data-info-id="${info.id}" >${info.name}</a></li>
+            <li><a href="#" data-id="${comment.id}" data-info-id="${info.id}">${info.name}</a></li>
             <br>
             `
         })
@@ -99,7 +100,7 @@ async function displayInfo(id){
 function linkToClick() {
     const infos = document.querySelectorAll("li a")
     infos.forEach(info => {
-        info.addEventListener('clcik', (e) => displayInfo(e.target.dataset.id))
+        info.addEventListener('click', (e) => displayInfo(e.target.dataset.id))
     })
 }
 
