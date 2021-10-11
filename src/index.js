@@ -58,27 +58,28 @@ async function createInfos(e){
     main.innerHTML += newInfo.render()
 }
 
-async function createComment(e) {
-    e.preventDefault()
-    const infoId = document.querySelector("#add-comment").dataset.id
-    let main = document.getElementById('main')
-    let comment = {
-        info_id: infoId,
-        title: e.target.querySelector("#title"),
-        description: e.target.querySelector("#description"),
-    }
-    let data  = await apiService.getCreateComment(comment)
-    let newComment = new Comment(data)
-    main.innerHTML = newComment.renderComment()
-    clickToCreateComment()
-}
-
 async function displayComment(e) {
     let id = e.target.dataset.id
     const data = await apiService.fetchComment(id)
     const comment = new Comment(data)
     main.innerHTML = comment.renderComment()
     document.getElementById('delete-comment').addEventListener('click', getDeleteComment)
+}
+
+async function createComment(e) {
+    e.preventDefault()
+    const infoId = document.querySelector("#add-comment")
+    let main = document.getElementById('main')
+    let comment = {
+        info_id: infoId,
+        title: e.target.querySelector('#title'),
+        description: e.target.querySelector('#description'),
+    
+    }
+    let data  = await apiService.getCreateComment(comment)
+    let newComment = new Comment(data)
+    main.innerHTML = newComment.renderComment()
+    clickToCreateComment()
 }
 
 async function displayInfo(id){
@@ -95,6 +96,7 @@ async function displayInfo(id){
         linkToComments()
     }
     document.getElementById('add-comment').addEventListener('click', displayCommentForm)
+  
     
 }
 
@@ -119,14 +121,13 @@ function clickToCreateComment(){
 }
 
 async function getDeleteComment(e) {
-    let infoId = e.target.dataset.infoId
+    let infoId= e.target.dataset.infoId
     let id = e.target.dataset.id
     const data = await apiService.deleteComment(id)
-    .then( data => {
+    .then(data => {
         displayInfo(infoId)
     })
 }
-
 
 
 load()

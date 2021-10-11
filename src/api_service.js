@@ -63,7 +63,9 @@ class ApiService {
                 Accept: 'application/json'
             }
         }
-        let response = await fetch(this.baseUrl + `/comments/${id}`, configObject)
+        let response = await fetch(`${this.baseUrl}/comments/${id}`, configObject)
+        configObject(response)
+        
     }
 
 }
