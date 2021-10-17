@@ -1,8 +1,10 @@
 class Comment {
-    constructor({id, comment_title, description}) {
+    constructor({id, comment_title, description, info_id}) {
         this.id = id
         this.comment_title = comment_title
         this.description = description
+        this.info_id = info_id
+
        
     }
     renderComments() {
@@ -22,7 +24,7 @@ class Comment {
         <h3>Description:</h3>
         <h2>${this.description}</h2>
         <br>
-        <button id="delete-comment" data-id="${this.id}" data-comment-id="${this.info_id}">Delete</button>
+        <button id="delete-comment" data-id="${this.id}">Delete</button>
         `
 
     }
