@@ -1,43 +1,28 @@
 class Comment {
-    constructor({id, comment_title, description, info_id}) {
-        this.id = id
-        this.comment_title = comment_title
+    constructor({title, description, id}) {
+        this.title = title
         this.description = description
-        this.info_id = info_id
-
-       
+        this.id = id
     }
+    
     renderComments() {
         return `
         <li>
-        <a href="#" data-id="${this.id}">${this.comment_title}</a> 
+        <a href="#" data-id="${this.id}">${this.title}</a> 
         </li>
         <br>
-        <button id="create-comment" data-id="${info.id}">Create Comment</button>
+        <button id="create-comment" data-id="${this.info_id}">Create Comment</button>
         `
     }
     renderComment() {
         return `
-        <h3>Title:</h3>
-        <h2>${this.comment_title}</h2>
-        <br>
-        <h3>Description:</h3>
-        <h2>${this.description}</h2>
-        <br>
-        <button id="delete-comment" data-id="${this.id}">Delete</button>
+        <h2>Title:</h2>
+        <h1>${this.title}</h1>
+        <h2>Description:</h1>
+        <h1>${this.description}</h1>
+        <button id="delete-comment" data-id="${this.id}" data-info-id="${this.info_id}">Delete</button>
         `
-
     }
 
-    //handleClick = (e) => {
-      //  if(e.target.innerText === "Edit"){
-        //    console.log(e.target)
-           // e.target.innerText = "Submit"
-           // this.editForm()
-       // }
-       // else if(e.target.innerText === "Delete"){
-        //    console.log(e.target)
-          //  commentCall.deleteComments(e)
-       // }
-    //}
 }
+//<button id="create-comment" data-id="${this.info_id}">Create Comment</button>
