@@ -33,6 +33,7 @@ async function renderComments() {
 function displayCommentForm(e) {
     let formInput = document.querySelector("#new-comment-form")
     let input = `
+    <div id="comment">
     <form>
     <input type="hidden" value="${e.target.dataset.id}">
     <label>Title:</label>
@@ -42,6 +43,7 @@ function displayCommentForm(e) {
     <br>
     <input type="submit" value="Create Comment">
     </form>
+    </div>
     `
     formInput.innerHTML = input
     document.querySelector('form').addEventListener('submit', createComment)

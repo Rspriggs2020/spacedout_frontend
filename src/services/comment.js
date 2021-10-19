@@ -30,4 +30,3 @@ class Comment {
         `
     }
 }
-//<button id="create-comment" data-id="${this.info_id}">Create Comment</button>
