@@ -1,14 +1,23 @@
 class Info{
-    constructor({name, galaxy, moons, mass, gravity, discoveryDate, id, comment_id}) {
-        this.name = name
-        this.galaxy = galaxy
-        this.moons = moons
-        this.mass = mass
-        this.gravity = gravity
-        this.discoveryDate = discoveryDate
-        this.id = id
-        this.comment_id = comment_id
+    //constructor({name, galaxy, moons, mass, gravity, discoveryDate, id, comment_id}) {
+      //  this.name = name
+       // this.galaxy = galaxy
+        //this.moons = moons
+        //this.mass = mass
+        //this.gravity = gravity
+        //this.discoveryDate = discoveryDate
+        //this.id = id
+        //this.comment_id = comment_id
+    constructor(data){
+        this.name = data.name
+        this.galaxy = data.galaxy
+        this.moons = data.moons
+        this.mass = data.mass
+        this.gravity = data.gravity
+        this.discoveryDate = data.discoveryDate
+        this.id = data.id
     }
+    
     render() {
         return `
         <li>

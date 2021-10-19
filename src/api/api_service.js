@@ -55,7 +55,7 @@ class ApiService {
         return data
     }
 
-    async getDeleteComment(id) {
+    async getDeleteComment(id){
         let configObject = {
             method: 'DELETE',
             headers: {
@@ -63,6 +63,7 @@ class ApiService {
                 Accept: 'application/json'
             }
         }
-        let response = await fetch(`${this.baseUrl}/comments/${id}`, configObject)    
+        
+        let response = await fetch(this.baseUrl + `/comments/${id}`, configObject)  
     }
 }

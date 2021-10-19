@@ -1,8 +1,15 @@
 class Comment {
-    constructor({title, description, id}) {
-        this.title = title
-        this.description = description
-        this.id = id
+    //constructor({title, description, id}) {
+    //    this.title = title
+      //  this.description = description
+       // this.id = id
+    //}
+    constructor(data) {
+        this.id = data.id
+        this.title = data.title
+        this.description = data.description
+        this.info_id = data.info_id
+
     }
     
     renderComments() {
@@ -11,7 +18,6 @@ class Comment {
         <a href="#" data-id="${this.id}">${this.title}</a> 
         </li>
         <br>
-        <button id="create-comment" data-id="${this.info_id}">Create Comment</button>
         `
     }
     renderComment() {
@@ -20,9 +26,8 @@ class Comment {
         <h1>${this.title}</h1>
         <h2>Description:</h1>
         <h1>${this.description}</h1>
-        <button id="delete-comment" data-id="${this.id}" data-info-id="${this.info_id}">Delete</button>
+        <button id="delete" data-id="${this.id}" data-info-id"${this.info_id}>Delete</button>
         `
     }
-
 }
 //<button id="create-comment" data-id="${this.info_id}">Create Comment</button>
