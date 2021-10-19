@@ -144,9 +144,9 @@ function clickToCreateComment(){
     })
 }
 
-function clearInput() {
-    let formInput = document.querySelector('#planet-form')
-    formInput.innerHTML = ""
-}
+//function clearInput() {
+  //  let formInput = document.querySelector('#planet-form')
+   // formInput.innerHTML = ""
+//}
 
 load()

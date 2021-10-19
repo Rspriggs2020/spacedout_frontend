@@ -24,7 +24,6 @@ class Info{
         <li>
         <a href="#" data-id="${this.id}">${this.name}</a>
         </li>
-
         `
     }
 
