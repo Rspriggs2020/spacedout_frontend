@@ -4,13 +4,6 @@ class Comment {
         this.description = description
         this.id = id
     }
-    //constructor(data) {
-      //  this.id = data.id
-        //this.title = data.title
-       // this.description = data.description
-       // this.info_id = data.info_id
-
-   // }
     
     renderComments() {
         return `

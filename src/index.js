@@ -7,7 +7,6 @@ const load = () => {
 }
 
 function getEventListener() {
-    //document.getElementById('planet-form').addEventListener('click', displayCreateInfo)
     document.getElementById('form').addEventListener('click', renderInfos)
 }
 
@@ -48,19 +47,6 @@ function displayCommentForm(e) {
     formInput.innerHTML = input
     document.querySelector('form').addEventListener('submit', createComment)
 }
-
-//function displayCreateInfo() {
-  //  let formInput = document.querySelector("#planet-form")
-   // let html = `
-   // <form>
-   // <label>Name:</label>
-   // <input type="text" id="name">
-    //<input type="submit">
-   // </form>
-   // `
-   // formInput.innerHTML = html
-   // document.querySelector('form').addEventListener('submit', createInfos)
-//}
 
 async function displayComment(e) {
     let id = e.target.dataset.id
@@ -103,18 +89,6 @@ async function createComment(e) {
     clickToCreateComment()
 }
 
-//async function createInfos(e){
-  //  e.preventDefault()
-   // let main = document.getElementById('main')
-   // let info = {
-    //    name: e.target.querySelector('#name').value,
-   // }
-   // let data = await apiService.getCreateInfo(info)
-   // let newInfo = new Info(data)
-   // main.innerHTML += newInfo.render()
-   // clearInput()
-//}
-
 async function deleteComment(e) {
     let infoId = e.target.dataset.infoId
     let id = e.target.dataset.id
@@ -143,10 +117,5 @@ function clickToCreateComment(){
         comment.addEventListener('click', displayComment)
     })
 }
-
-//function clearInput() {
-  //  let formInput = document.querySelector('#planet-form')
-   // formInput.innerHTML = ""
-//}
 
 load()
