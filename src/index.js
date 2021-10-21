@@ -8,6 +8,7 @@ const load = () => {
 
 function getEventListener() {
     document.getElementById('form').addEventListener('click', renderInfos)
+    document.getElementById('comment-form').addEventListener('click', renderComments)
 }
 
 async function renderInfos() {
@@ -25,7 +26,7 @@ async function renderComments() {
     main.innerHTML = ""
     comments.map(com => {
         const newComment = new Comment(com)
-        main.innerHTML += newComment.render()
+        main.innerHTML += newComment.renderComments()
     })
 }
 
@@ -64,7 +65,7 @@ async function displayInfo(id){
     if (info.comments) {
         info.comments.forEach(comment => {
             main.innerHTML += `
-            <li><a href="#" data-id="${comment.id}" data-info-id="${info.id}">${comment.title}</a></li>
+            <li><a data-id="${comment.id}" data-info-id="${info.id}">${comment.title}</a></li>
             <br>
             `
         })
@@ -112,7 +113,7 @@ function linkToComments() {
 }
 
 function clickToCreateComment(){
-    const comments = document.querySelectorAll("li")
+    const comments = document.querySelectorAll("li a")
     comments.forEach(comment => {
         comment.addEventListener('click', displayComment)
     })

@@ -33,7 +33,7 @@ class Info{
         <h2>Discovery Date:</h2>
         <h1> ${this.discoveryDate}</h1>
         
-        <button id="add-comment" data-id="${this.id}">Add Comment</button>
+        <button id="add-comment" data-id="${this.id}" data-comment-id="${this.comment_id}">Add Comment</button>
         <div id="add-comment-from"</div>
         `
     }

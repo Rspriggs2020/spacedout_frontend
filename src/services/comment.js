@@ -19,7 +19,9 @@ class Comment {
         <h1>${this.title}</h1>
         <h2>Description:</h1>
         <h1>${this.description}</h1>
-        <button id="delete" data-id="${this.id}" data-info-id"${this.info_id}>Delete</button>
+        <button id="delete" data-id="${this.id}">Delete</button>
         `
     }
 }
+
+//<button id="create-comment" data-id="${this.id}">Add Comment</button>
