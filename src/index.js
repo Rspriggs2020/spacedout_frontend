@@ -4,11 +4,12 @@ let main = document.getElementById('main')
 const load = () => {
     getEventListener()
     renderInfos()
+    renderComments()
 }
 
 function getEventListener() {
     document.getElementById('form').addEventListener('click', renderInfos)
-    document.getElementById('comment-form').addEventListener('click', renderComments)
+    document.getElementById('comment').addEventListener('click', renderComments)
 }
 
 async function renderInfos() {
@@ -28,6 +29,7 @@ async function renderComments() {
         const newComment = new Comment(com)
         main.innerHTML += newComment.renderComments()
     })
+    linkToComments()
 }
 
 function displayCommentForm(e) {
@@ -97,6 +99,11 @@ async function deleteComment(e) {
     .then(data => {
         renderInfos(infoId)
     })
+}
+
+function commentInfo() {
+    document.querySelectorAll("li a").length
+    
 }
 
 function linkToClick() {
