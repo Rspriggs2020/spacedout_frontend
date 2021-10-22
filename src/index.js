@@ -9,7 +9,7 @@ const load = () => {
 
 function getEventListener() {
     document.getElementById('form').addEventListener('click', renderInfos)
-    document.getElementById('comment').addEventListener('click', renderComments)
+    //document.getElementById('comment').addEventListener('click', renderComments)
 }
 
 async function renderInfos() {
