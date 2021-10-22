@@ -57,23 +57,27 @@ async function displayComment(e) {
     const newComment = new Comment(data)
     main.innerHTML = newComment.renderComment()
     document.getElementById('delete').addEventListener('click', deleteComment)
+    
 }
 
 
 async function displayInfo(id){
     const data = await apiService.fetchInfo(id)
     const info = new Info(data)
-    main.innerHTML = info.renderInfo()
-    if (info.comments) {
-        info.comments.forEach(comment => {
+    main.innerHTML = info.renderInfoOutput()
+    linkToComments() 
+    if (data.comments) {
+        data.comments.forEach(comment => {
             main.innerHTML += `
             <li><a data-id="${comment.id}" data-info-id="${info.id}">${comment.title}</a></li>
             <br>
             `
         })
-        linkToComments()
+        linkToComments()  
+        
     }
-    document.getElementById('add-comment').addEventListener('click', displayCommentForm)  
+  
+    document.getElementById('add-comment').addEventListener('click', displayCommentForm) 
 }
 
 async function createComment(e) {

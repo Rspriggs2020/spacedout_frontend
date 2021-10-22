@@ -18,7 +18,7 @@ class Info{
         `
     }
 
-    renderInfo() {
+    renderInfoOutput() {
         return `
     
         <h2>${this.name}</h2>

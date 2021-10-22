@@ -8,7 +8,7 @@ class Comment {
     renderComments() {
         return `
         <li>
-        <a href="#" data-id="${this.id}">${this.title}</a> 
+        <a href="#" data-id="${this.id}">${info.name}}</a> 
         </li>
         <br>
         `
