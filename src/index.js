@@ -65,11 +65,10 @@ async function displayInfo(id){
     const data = await apiService.fetchInfo(id)
     const info = new Info(data)
     main.innerHTML = info.renderInfoOutput()
-    linkToComments() 
     if (data.comments) {
         data.comments.forEach(comment => {
             main.innerHTML += `
-            <li><a data-id="${comment.id}" data-info-id="${info.id}">${comment.title}</a></li>
+            <li><a data-id="${comment.id}" data-info-id="${info.name}">${comment.title}</a></li>
             <br>
             `
         })
