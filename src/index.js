@@ -91,7 +91,7 @@ async function createComment(e) {
     }
     let data = await apiService.getCreateComment(comment)
     let newComment = new Comment(data)
-    main.innerHTML = newComment.renderComments()
+    main.innerHTML = newComment.renderComment()
     clickToCreateComment()
 }
 
@@ -102,11 +102,6 @@ async function deleteComment(e) {
     .then(data => {
         renderInfos(infoId)
     })
-}
-
-function commentInfo() {
-    document.querySelectorAll("li a").length
-    
 }
 
 function linkToClick() {
