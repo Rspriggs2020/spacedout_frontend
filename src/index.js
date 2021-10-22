@@ -68,7 +68,9 @@ async function displayInfo(id){
     if (data.comments) {
         data.comments.forEach(comment => {
             main.innerHTML += `
-            <li><a data-id="${comment.id}" data-info-id="${info.name}">${comment.title}</a></li>
+            <li><a data-id="${comment.id}" data-info-id="${info.name}"><br>
+            Title:   ${comment.title} <br>
+            Description:   ${comment.description}</a></li>
             <br>
             `
         })
