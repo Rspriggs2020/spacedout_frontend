@@ -1,4 +1,5 @@
 class Info{
+    //static sortNames = [];
     constructor({name, galaxy, moons, mass, gravity, discoveryDate, id, comment_id}) {
         this.name = name
         this.galaxy = galaxy
@@ -8,14 +9,22 @@ class Info{
         this.discoveryDate = discoveryDate
         this.id = id
         this.comment_id = comment_id
+        //this.element = document.createElement('li');
+        //this.element.dataset['id'] = id;
+        //Info.sortNames.push(this)
+        
     }
     
     render() {
         return `
+        <ul>
         <li>
         <a href="#" data-id="${this.id}">${this.name}</a>
         </li>
+        </ul>
+
         `
+        
     }
 
     renderInfoOutput() {
@@ -37,4 +46,40 @@ class Info{
         <div id="add-comment-from"</div>
         `
     }
+
+    //grabSort() {
+      // Info.sortNames.sort((a, b) => a - b)
+       // console.log(sortNames)
+        //return `
+        //<li>
+        //<a href="#" data-id="${this.id}">${this.name}</a>
+        //</li>
+
+        //`
+       // Info.sortNames.sort((a, b) => a - b)
+        //return
+
+        //this.element.innerHTML = `
+      
+        //<li>
+        //<a href="#" data-id="${this.id}">${this.name}</a>
+        //</li>
+
+        //`
+        //return this.element
+        //Info.sortNames.sort((a, b) => a.name.localeCompare(b.name))
+    
+       //Info.sortNames.sort((a, b) => a - b)
+    //}   //return sortNames
+    //}
+    //static grabSort() {
+      //  Info.sortNames.sort((a, b) => {
+
+        //}
+        //)  
+        
+        //let sortNames = Info.sort()
+        //document.getElementById('sort').addEventListener('click', renderInfos)  
+
+ 
 }

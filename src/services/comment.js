@@ -20,6 +20,7 @@ class Comment {
         <h2>Description:</h1>
         <h1>${this.description}</h1>
         <button id="delete" data-id="${this.id}">Delete</button>
+    
         `
     }
 }

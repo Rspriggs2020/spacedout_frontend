@@ -9,6 +9,43 @@
     <script defer type="text/javascript" src="src/services/comment.js"></script>
     <script defer type="text/javascript" src="src/api/api_service.js"></script>
     <script defer type="text/javascript" src="src/index.js"></script>
+    <script>
+        function sort() {
+  
+            // Declaring Variables
+            var list, i, run, a, stop;
+  
+            // Taking content of list as input
+            list = document.getElementById("main");
+  
+            run = true;
+  
+            while (run) {
+                run = false;
+                a = list.getElementsByTagName("a");
+  
+                // Loop traversing through all the list items
+                for (i = 0; i < (a.length - 1); i++) {
+                    stop = false;
+                    if (a[i].innerHTML.toLowerCase() > 
+                        a[i + 1].innerHTML.toLowerCase()) {
+                        stop = true;
+                        break;
+                    }
+                }
+  
+                /* If the current item is smaller than 
+                   the next item then adding it after 
+                   it using insertBefore() method */
+                if (stop) {
+                    a[i].parentNode.insertBefore(
+                            a[i + 1], a[i]);
+  
+                    run = true;
+                }
+            }
+        }
+    </script>
     <title>SpacedOut</title>    
 </head>
 <body>
@@ -18,14 +55,19 @@
         <h3>Space is vast, mysterious, and unknown. Thanks to NASA, they share a glimpse into our galaxy and it's farthest reaches. To check out more click the button below</h3>
     </div>
     <div id="click-button">
-        <button href="#" id="form" class="btn btn primary">Planet Info</button> 
-        <!--<button href="#" id="comment" class="btn btn primary">Your Comments</button>-->
+        <button href="#" id="form" class="btn btn primary">Planet Info</button>
+        <!--<button href="#top" id="sort" class="btn btn primary">Sort</button>-->
     </div>
     <div id="new-comment-form"></div>
-    
     <div id="main">
         <ul>
         </ul>
     </div>
+    <br>
+    <button style="color: black;"
+            onclick="sort()">
+            Click Here To Sort
+        </button>
+   <!--<button id="sort">Sort</button>-->
 </body>
 </html>

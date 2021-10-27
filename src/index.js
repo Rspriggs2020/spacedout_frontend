@@ -1,16 +1,18 @@
 const apiService = new ApiService()
 let main = document.getElementById('main')
+//let list = document.getElementById('myInfo')
+
 
 const load = () => {
     getEventListener()
     renderInfos()
-    renderComments()
 }
 
 function getEventListener() {
     document.getElementById('form').addEventListener('click', renderInfos)
-    //document.getElementById('comment').addEventListener('click', renderComments)
+    //document.getElementById('sort').addEventListener('click', linkToSort)
 }
+
 
 async function renderInfos() {
     const infos = await apiService.fetchInfos()
@@ -19,7 +21,10 @@ async function renderInfos() {
         const i = new Info(info)
         main.innerHTML += i.render()
     })
+    //debugger
     linkToClick()
+    //linkToSort()
+   // document.getElementById('sort').addEventListener('click', linkToSort)
 }
 
 async function renderComments() {
@@ -31,6 +36,20 @@ async function renderComments() {
     })
     linkToComments()
 }
+
+
+
+//async function renderInfoToo() {
+  //  const infos = await apiService.fetchInfos()
+   // main.innerHTML = ""
+   // infos.map(info => {
+     //   const i = new Info(info)
+       // main.innerHTML += i.render()
+    //})
+    //linkToSort()
+//}
+
+
 
 function displayCommentForm(e) {
     let formInput = document.querySelector("#new-comment-form")
@@ -60,7 +79,6 @@ async function displayComment(e) {
     
 }
 
-
 async function displayInfo(id){
     const data = await apiService.fetchInfo(id)
     const info = new Info(data)
@@ -77,7 +95,6 @@ async function displayInfo(id){
         linkToComments()  
         
     }
-  
     document.getElementById('add-comment').addEventListener('click', displayCommentForm) 
 }
 
@@ -112,6 +129,36 @@ function linkToClick() {
         info.addEventListener('click', (e) => displayInfo(e.target.dataset.id))
     })
 }
+
+
+//function linkToSort() {
+    
+  //  const infos = document.querySelectorAll("li a")
+    //infos.forEach(info => {
+      // info.addEventListener('click', (e) => grabSort(e.target.dataset.id))
+    //})
+//}
+
+//function linkToSort(){
+  //  return function(a, b) {
+    //    if (a[field] > b[field]) {
+      //    return -1;
+       // } else if (a[field] < b[field]) {
+         // return 1;
+       // }
+       // return 0;
+      //};
+//}
+
+//function linkToSort(field) {
+
+//}//
+
+  
+
+
+
+
 
 function linkToComments() {
    const comments = document.querySelectorAll("li a")
