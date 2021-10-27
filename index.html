@@ -12,10 +12,8 @@
     <script>
         function sort() {
   
-            // Declaring Variables
             var list, i, run, a, stop;
   
-            // Taking content of list as input
             list = document.getElementById("main");
   
             run = true;
@@ -23,8 +21,7 @@
             while (run) {
                 run = false;
                 a = list.getElementsByTagName("a");
-  
-                // Loop traversing through all the list items
+
                 for (i = 0; i < (a.length - 1); i++) {
                     stop = false;
                     if (a[i].innerHTML.toLowerCase() > 
@@ -33,10 +30,6 @@
                         break;
                     }
                 }
-  
-                /* If the current item is smaller than 
-                   the next item then adding it after 
-                   it using insertBefore() method */
                 if (stop) {
                     a[i].parentNode.insertBefore(
                             a[i + 1], a[i]);
